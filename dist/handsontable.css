@@ -24,7 +24,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  * Version: 6.2.2
- * Release date: 19/12/2018 (built at 02/07/2020 12:05:26)
+ * Release date: 19/12/2018 (built at 21/08/2020 15:31:51)
  */
 /**
  * Fix for bootstrap styles
@@ -1330,6 +1330,9 @@ textarea#HandsontableCopyPaste {
 
 .handsontable tbody td[rowspan][class*="area"][class*="highlight"][class*="fullySelectedMergedCell-7"]:before {
     opacity: 0.58;
+}
+.handsontable thead th.hiddenHeader:not(:first-of-type) {
+  display: none;
 }
 
 /*# sourceMappingURL=handsontable.css.map*/

@@ -13,86 +13,51 @@ function () {
   function GhostTable(plugin) {
     _classCallCheck(this, GhostTable);
 
-    /**
-     * Reference to NestedHeaders plugin.
-     *
-     * @type {NestedHeaders}
-     */
-    this.nestedHeaders = plugin;
-    /**
-     * Temporary element created to get minimal headers widths.
-     *
-     * @type {*}
-     */
-
-    this.container = void 0;
-    /**
-     * Cached the headers widths.
-     *
-     * @type {Array}
-     */
-
-    this.widthsCache = [];
+    this.widths = [];
+    this.wrapper = void 0;
+    this.headersInstance = plugin;
   }
-  /**
-   * Build cache of the headers widths.
-   *
-   * @private
-   */
-
 
   _createClass(GhostTable, [{
-    key: "buildWidthsMapper",
-    value: function buildWidthsMapper() {
-      this.container = this.nestedHeaders.hot.rootDocument.createElement('div');
-      this.buildGhostTable(this.container);
-      this.nestedHeaders.hot.rootElement.appendChild(this.container);
-      var columns = this.container.querySelectorAll('tr:last-of-type th');
-      var maxColumns = columns.length;
+    key: "setWidths",
+    value: function setWidths() {
+      this.wrapper = document.createElement('div');
+      this.createGhostTable(this.wrapper);
+      this.headersInstance.hot.rootElement.appendChild(this.wrapper);
+      var columns = this.wrapper.querySelectorAll('tr:last-of-type th');
+      var columnsLength = columns.length;
 
-      for (var i = 0; i < maxColumns; i++) {
-        this.widthsCache.push(columns[i].offsetWidth);
+      for (var i = 0; i < columnsLength; i++) {
+        this.widths.push(columns[i].offsetWidth);
       }
 
-      this.container.parentNode.removeChild(this.container);
-      this.container = null;
-      this.nestedHeaders.hot.render();
+      this.wrapper.parentNode.removeChild(this.wrapper);
+      this.wrapper = null;
+      this.headersInstance.hot.render();
     }
-    /**
-     * Build temporary table for getting minimal columns widths.
-     *
-     * @private
-     * @param {HTMLElement} container
-     */
-
   }, {
-    key: "buildGhostTable",
-    value: function buildGhostTable(container) {
-      var rootDocument = this.nestedHeaders.hot.rootDocument;
-      var fragment = rootDocument.createDocumentFragment();
-      var table = rootDocument.createElement('table');
+    key: "createGhostTable",
+    value: function createGhostTable(container) {
+      var d = document;
+      var fragment = d.createDocumentFragment();
+      var table = d.createElement('table');
       var lastRowColspan = false;
-      var isDropdownEnabled = !!this.nestedHeaders.hot.getSettings().dropdownMenu;
-      var maxRows = this.nestedHeaders.colspanArray.length;
-      var maxCols = this.nestedHeaders.hot.countCols();
+      var maxRows = this.headersInstance.colspanArray.length;
+      var maxCols = this.headersInstance.hot.countCols();
       var lastRowIndex = maxRows - 1;
 
       for (var row = 0; row < maxRows; row++) {
-        var tr = rootDocument.createElement('tr');
+        var tr = d.createElement('tr');
         lastRowColspan = false;
 
         for (var col = 0; col < maxCols; col++) {
-          var td = rootDocument.createElement('th');
-          var headerObj = clone(this.nestedHeaders.colspanArray[row][col]);
+          var td = d.createElement('th');
+          var headerObj = clone(this.headersInstance.colspanArray[row][col]);
 
           if (headerObj && !headerObj.hidden) {
             if (row === lastRowIndex) {
               if (headerObj.colspan > 1) {
                 lastRowColspan = true;
-              }
-
-              if (isDropdownEnabled) {
-                headerObj.label += '<button class="changeType"></button>';
               }
             }
 
@@ -103,15 +68,14 @@ function () {
         }
 
         table.appendChild(tr);
-      } // We have to be sure the last row contains only the single columns.
-
+      }
 
       if (lastRowColspan) {
         {
-          var _tr = rootDocument.createElement('tr');
+          var _tr = d.createElement('tr');
 
           for (var _col = 0; _col < maxCols; _col++) {
-            var _td = rootDocument.createElement('th');
+            var _td = d.createElement('th');
 
             _tr.appendChild(_td);
           }
@@ -123,15 +87,11 @@ function () {
       fragment.appendChild(table);
       container.appendChild(fragment);
     }
-    /**
-     * Clear the widths cache.
-     */
-
   }, {
     key: "clear",
     value: function clear() {
-      this.container = null;
-      this.widthsCache.length = 0;
+      this.wrapper = null;
+      this.widths.length = 0;
     }
   }]);
 

@@ -86,6 +86,10 @@ var _undoRedo = _interopRequireDefault(require("./undoRedo/undoRedo"));
 
 exports.UndoRedo = _undoRedo.default;
 
+var _nestedHeaders = _interopRequireDefault(require("./nestedHeaders/nestedHeaders"));
+
+exports.NestedHeaders = _nestedHeaders.default;
+
 var _base = _interopRequireDefault(require("./_base"));
 
 exports.Base = _base.default;

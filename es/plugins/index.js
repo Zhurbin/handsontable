@@ -19,5 +19,6 @@ import ObserveChanges from './observeChanges/observeChanges';
 import Search from './search/search';
 import TouchScroll from './touchScroll/touchScroll';
 import UndoRedo from './undoRedo/undoRedo';
+import NestedHeaders from './nestedHeaders/nestedHeaders';
 import Base from './_base';
-export { AutoColumnSize, AutoFill, AutoRowSize, ColumnSorting, Comments, ContextMenu, CopyPaste, CustomBorders, DragToScroll, ManualColumnFreeze, ManualColumnMove, ManualColumnResize, ManualRowMove, ManualRowResize, MergeCells, MultipleSelectionHandles, ObserveChanges, PersistentState, Search, TouchScroll, UndoRedo, Base };
+export { AutoColumnSize, AutoFill, AutoRowSize, ColumnSorting, Comments, ContextMenu, CopyPaste, CustomBorders, DragToScroll, ManualColumnFreeze, ManualColumnMove, ManualColumnResize, ManualRowMove, ManualRowResize, MergeCells, MultipleSelectionHandles, ObserveChanges, PersistentState, Search, TouchScroll, UndoRedo, NestedHeaders, Base };

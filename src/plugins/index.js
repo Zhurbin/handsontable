@@ -19,6 +19,7 @@ import ObserveChanges from './observeChanges/observeChanges';
 import Search from './search/search';
 import TouchScroll from './touchScroll/touchScroll';
 import UndoRedo from './undoRedo/undoRedo';
+import NestedHeaders from './nestedHeaders/nestedHeaders';
 import Base from './_base';
 
 export {
@@ -43,5 +44,6 @@ export {
   Search,
   TouchScroll,
   UndoRedo,
+  NestedHeaders,
   Base,
 };

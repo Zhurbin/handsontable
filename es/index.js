@@ -42,7 +42,7 @@ Handsontable.DefaultSettings = DefaultSettings;
 Handsontable.EventManager = EventManager;
 Handsontable._getListenersCounter = getListenersCounter; // For MemoryLeak tests
 
-Handsontable.buildDate = "02/07/2020 12:05:19";
+Handsontable.buildDate = "21/08/2020 15:31:44";
 Handsontable.packageName = "handsontable";
 Handsontable.version = "6.2.2";
 var baseVersion = "";

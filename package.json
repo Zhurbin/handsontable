@@ -59,6 +59,7 @@
     "data-spreadsheet"
   ],
   "dependencies": {
+    "core-js": "^3.6.5",
     "moment": "2.20.1",
     "numbro": "^2.0.6",
     "pikaday": "1.5.1"
